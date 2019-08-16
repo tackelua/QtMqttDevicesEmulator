@@ -1,11 +1,23 @@
-#ifndef DHTEMULATOR_H
-#define DHTEMULATOR_H
+#pragma once
 
+#include "CommonDeviceEmulator.h"
+#include <QTimer>
 
-class DhtEmulator
+class DhtEmulator : public CommonDeviceEmulator
 {
+    Q_OBJECT
+    AUTO_PROPERTY(qint32, interval)
+    AUTO_PROPERTY(bool, active)
+    READ_PROPERTY(double, temperature)
+    READ_PROPERTY(double, humidity)
+
 public:
     DhtEmulator();
-};
 
-#endif // DHTEMULATOR_H
+    double getTemperature();
+    double getHumidity();
+    QString getDhtData();
+
+private:
+    QTimer* m_pTimer;
+};

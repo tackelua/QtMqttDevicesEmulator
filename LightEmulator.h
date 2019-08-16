@@ -2,13 +2,12 @@
 
 #include "CommonDeviceEmulator.h"
 
-class RelaysEmulator : public CommonDeviceEmulator
+class LightEmulator : public CommonDeviceEmulator
 {
     Q_OBJECT
     AUTO_PROPERTY(bool, status)
-
 public:
-    RelaysEmulator();
+    explicit LightEmulator();
 
     void onMessageReceived(const QByteArray& message, const QMqttTopicName& topic = QMqttTopicName()) override;
 };
